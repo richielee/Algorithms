@@ -25,7 +25,10 @@ def string_plus(x, y):
         ans += str(carry)
     return (ans[::-1])
 
-#print (string_plus('50','50'))
+def string_minus(x, y):
+    ans = ''
+    n = max(len(x), len(y))
+
 
 def check_plus():
     ans = 1
@@ -45,8 +48,8 @@ def Karatsuba(x, y):
     d = y[n/2:]
     ac = Karatsuba(a,c)
     bd = Karatsuba(b,d)
-    a_b = str(long(a) + long(b))
-    c_d = str(long(c) + long(d))
+    a_b = string_plus(a, b)
+    c_d = string_plus(c, d)
     abcd = Karatsuba(a_b, c_d)
     mid = abcd - ac - bd
     print('abcd',abcd)
