@@ -3,7 +3,7 @@ A multiplication function that implements the Karatsuba Algorithm
 As we aim to process very large numbers, the output should be of type string.
 '''
 
-def string_plus(x, y):
+def strplus(x, y):
     ans = ''
     n = max(len(x),len(y))
     x = '0' * (n - len(x)) + x
@@ -25,16 +25,14 @@ def string_plus(x, y):
         ans += str(carry)
     return (ans[::-1])
 
-def string_minus(x, y):
-    ans = ''
-    n = max(len(x), len(y))
-
+def strminus(x, y):
+    pass
 
 def check_plus():
     ans = 1
     for i in range(510):
         for j in range(510):
-            ans *= (i + j == int(string_plus(str(i),str(j))))
+            ans *= (i + j == int(strplus(str(i),str(j))))
     return (ans)
 print (check_plus())
 
@@ -48,14 +46,14 @@ def Karatsuba(x, y):
     d = y[n/2:]
     ac = Karatsuba(a,c)
     bd = Karatsuba(b,d)
-    a_b = string_plus(a, b)
-    c_d = string_plus(c, d)
+    a_b = strplus(a, b)
+    c_d = strplus(c, d)
     abcd = Karatsuba(a_b, c_d)
-    mid = abcd - ac - bd
+    mid = strminus(strminus(abcd, ac), bd)
     print('abcd',abcd)
     print('ac', ac)
     print('bd',bd)
-    return (ac * (10 ** n) + mid * (10 ** (n/2)) + bd)
+    return (strplus(strplus((ac + '0' * n) , (mid + '0' * (n/2))), bd))
 
 
 
