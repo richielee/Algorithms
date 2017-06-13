@@ -6,6 +6,7 @@ import random
 def mergesort(alist):
     '''This is a docstring '''
     if len(alist) > 1:
+        #Using // to avoid problems in Python 3
         mid = len(alist) // 2
         left = alist[:mid]
         right = alist[mid:]
